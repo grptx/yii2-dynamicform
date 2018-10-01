@@ -348,11 +348,13 @@
         }
 
         // "kartik-v/yii2-widget-datepicker"
-        var $hasDatepicker = $(widgetOptionsRoot.widgetItem).find('[data-krajee-datepicker]');
+        var $hasDatepicker = $(widgetOptionsRoot.widgetItem).find('[data-krajee-kvdatepicker]');
         if ($hasDatepicker.length > 0) {
             $hasDatepicker.each(function() {
-                $(this).parent().removeData().datepicker('remove');
-                $(this).parent().datepicker(eval($(this).attr('data-krajee-datepicker')));
+                debugger;
+                $(this).removeData();//.datepicker('remove');
+                $(this).kvDatepicker('destroy');
+                $(this).kvDatepicker(eval($(this).attr('data-krajee-kvdatepicker')));
             });
         }
 
