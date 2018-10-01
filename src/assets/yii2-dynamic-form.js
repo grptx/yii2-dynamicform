@@ -351,7 +351,6 @@
         var $hasDatepicker = $(widgetOptionsRoot.widgetItem).find('[data-krajee-kvdatepicker]');
         if ($hasDatepicker.length > 0) {
             $hasDatepicker.each(function() {
-                debugger;
                 $(this).removeData();//.datepicker('remove');
                 $(this).kvDatepicker('destroy');
                 $(this).kvDatepicker(eval($(this).attr('data-krajee-kvdatepicker')));
