@@ -356,7 +356,6 @@
                         }
                     ]);
                     $(this).on('typeahead:select', function(e, suggestion, name) {
-                        debugger;
                         var v = suggestion.id;
                         $(this).parent().parent().parent().parent().parent().find('.service_item_id_hidden').find('input').val(v);
                     });
