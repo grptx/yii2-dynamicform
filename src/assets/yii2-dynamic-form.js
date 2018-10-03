@@ -342,9 +342,6 @@
         if($hasTypeahead.length > 0) {
             $hasTypeahead.each(function(){
                 if ($(this).attr('id')) {
-                    console.log("we:"+$(this).attr('id'));
-                    console.log($(this).attr('data-krajee-typeahead'));
-                    console.log(eval($(this).attr('data-krajee-typeahead')));
                     kvInitTA($(this).attr('id'),{},[
                         {
                             "display":"description",
