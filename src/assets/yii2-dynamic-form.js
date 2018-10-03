@@ -338,6 +338,36 @@
     var _restoreSpecialJs = function(widgetOptions) {
         var widgetOptionsRoot = _getWidgetOptionsRoot(widgetOptions);
 
+        var $hasTypeahead = $(widgetOptionsRoot.widgetItem).find('[data-krajee-typeahead]');
+        if($hasTypeahead.length > 0) {
+            $hasTypeahead.each(function(){
+                if ($(this).attr('id')) {
+                    console.log("we:"+$(this).attr('id'));
+                    console.log($(this).attr('data-krajee-typeahead'));
+                    console.log(eval($(this).attr('data-krajee-typeahead')));
+                    kvInitTA($(this).attr('id'),{},[
+                        {
+                            "display":"description",
+                            "displayKey":"id",
+                            "templates":
+                                {
+                                    "notFound":"<div class=\"text-danger\" style=\"padding:0 8px\">Unable to find products for selected query.</div>",
+                                    "suggestion":Handlebars.compile('<div><p class="repo-language">{{details}}</p><p class="repo-name">{{name}}</p><p class="repo-description">{{description}}</p></div>')
+                                },
+                            "name":"documentservice_0_service_item_search_data_1",
+                            "source":documentservice_0_service_item_search_data_1.ttAdapter()
+                        }
+                    ]);
+                    $(this).on('typeahead:select', function(e, suggestion, name) {
+                        debugger;
+                        var v = suggestion.id;
+                        $(this).parent().parent().parent().parent().parent().find('.service_item_id_hidden').find('input').val(v);
+                    });
+                }
+            });
+        }
+
+
         // "jquery.inputmask"
         var $hasInputmask = $(widgetOptionsRoot.widgetItem).find('[data-plugin-inputmask]');
         if ($hasInputmask.length > 0) {
