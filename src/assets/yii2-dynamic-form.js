@@ -359,6 +359,7 @@
                     ]);
                     $(this).on('typeahead:select', function(e, suggestion, name) {
                         var v = suggestion.id;
+
                         var parent = $(this).parent().parent().parent().parent();
                         parent.parent().find('.selected_service_item').html(suggestion.description+'<br>'+suggestion.details);
                         $(this).parent().parent().parent().parent().find('.service_item_id_hidden').find('input').val(v);
