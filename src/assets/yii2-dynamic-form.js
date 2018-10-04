@@ -342,6 +342,8 @@
         if($hasTypeahead.length > 0) {
             $hasTypeahead.each(function(){
                 if ($(this).attr('id')) {
+                    let documentservice_0_service_item_search_data_1 = new Bloodhound({"datumTokenizer":Bloodhound.tokenizers.obj.whitespace('value'),"queryTokenizer":Bloodhound.tokenizers.whitespace,"prefetch":{"url":"/service-item/invoice-list?bill_type_id=7&data=04%2F10%2F2018"},"remote":{"url":"/service-item/invoice-list?bill_type_id=7&data=04%2F10%2F2018&q=%QUERY","wildcard":"%QUERY"}});
+
                     kvInitTA($(this).attr('id'),{},[
                         {
                             "display":"description",
@@ -357,7 +359,9 @@
                     ]);
                     $(this).on('typeahead:select', function(e, suggestion, name) {
                         var v = suggestion.id;
-                        $(this).parent().parent().parent().parent().parent().find('.service_item_id_hidden').find('input').val(v);
+                        var parent = $(this).parent().parent().parent().parent();
+                        parent.parent().find('.selected_service_item').html(suggestion.description+'<br>'+suggestion.details);
+                        $(this).parent().parent().parent().parent().find('.service_item_id_hidden').find('input').val(v);
                     });
                 }
             });
